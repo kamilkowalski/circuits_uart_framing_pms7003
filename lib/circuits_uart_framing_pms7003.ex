@@ -56,7 +56,7 @@ defmodule CircuitsUARTFramingPMS7003 do
   end
 
   defp process_data(<<>>, messages) do
-    {:ok, messages}
+    {:ok, messages, <<>>}
   end
 
   defp process_data(<<_head::binary-size(1), tail::binary>>, messages) do
