@@ -1,11 +1,10 @@
-# CircuitsUartFramingPms7003
+# CircuitsUARTFramingPMS7003
 
-**TODO: Add description**
+A [Circuits.UART.Framing](https://hexdocs.pm/circuits_uart/Circuits.UART.Framing.html) module for communicating with the PMS7003 particle concentration sensor.
 
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `circuits_uart_framing_pms7003` to your list of dependencies in `mix.exs`:
+Add `circuits_uart_framing_pms7003` to your `mix.exs` file:
 
 ```elixir
 def deps do
@@ -15,7 +14,12 @@ def deps do
 end
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/circuits_uart_framing_pms7003](https://hexdocs.pm/circuits_uart_framing_pms7003).
+## Usage
 
+Use the framer in `Circuits.UART.open/3` or `Circuits.UART.configure/2`.
+
+```elixir
+Circuits.UART.open(pid, "COM1", framing: CircuitsUARTFramingPMS7003)
+# or
+Circuits.UART.configure(pid, framing: CircuitsUARTFramingPMS7003)
+```
