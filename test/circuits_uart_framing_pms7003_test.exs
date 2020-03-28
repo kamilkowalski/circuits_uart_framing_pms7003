@@ -34,21 +34,21 @@ defmodule CircuitsUARTFramingPMS7003Test do
       payload = generate_payload(5, 7, 3)
 
       assert Framer.remove_framing(payload, <<>>) ==
-               {:ok, [%Measurement{pm1: 5, pm25: 7, pm10: 3}]}
+               {:ok, [%Measurement{pm1: 5, pm25: 7, pm10: 3}], <<>>}
     end
 
     test "parsing measurement received partially as data and partially in the buffer" do
       <<buffer::binary-size(16), payload::binary-size(16)>> = generate_payload(3, 7, 1)
 
       assert Framer.remove_framing(payload, buffer) ==
-               {:ok, [%Measurement{pm1: 3, pm25: 7, pm10: 1}]}
+               {:ok, [%Measurement{pm1: 3, pm25: 7, pm10: 1}], <<>>}
     end
 
     test "rewinding to data frame" do
       payload = generate_payload(7, 4, 19)
 
       assert Framer.remove_framing(<<1, 2, 3>> <> payload, <<>>) ==
-               {:ok, [%Measurement{pm1: 7, pm25: 4, pm10: 19}]}
+               {:ok, [%Measurement{pm1: 7, pm25: 4, pm10: 19}], <<>>}
     end
 
     test "keeping the tail after extracting measurement" do
@@ -67,7 +67,7 @@ defmodule CircuitsUARTFramingPMS7003Test do
                 [
                   %Measurement{pm1: 8, pm25: 5, pm10: 9},
                   %Measurement{pm1: 9, pm25: 11, pm10: 7}
-                ]}
+                ], <<>>}
     end
   end
 
