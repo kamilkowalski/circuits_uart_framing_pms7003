@@ -1,5 +1,7 @@
 # CircuitsUARTFramingPMS7003
 
+[![CircleCI](https://circleci.com/gh/kamilkowalski/circuits_uart_framing_pms7003.svg?style=svg)](https://circleci.com/gh/kamilkowalski/circuits_uart_framing_pms7003)
+
 A [Circuits.UART.Framing](https://hexdocs.pm/circuits_uart/Circuits.UART.Framing.html) module for communicating with the PMS7003 particle concentration sensor.
 
 ## Installation
